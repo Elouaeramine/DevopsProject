@@ -30,9 +30,8 @@ pipeline {
             }
             agent{ docker { image 'maven'}  }
               steps {
-                script {
-                   // sh 'mvn clean install -Dmaven.test.skip=true'
-                    gv.sonarScan()
+                withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'Sonarqube Token') {
+                    sh 'mvn clean package sonar:sonar'
                 }
               }
         } 

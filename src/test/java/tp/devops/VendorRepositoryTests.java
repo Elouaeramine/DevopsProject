@@ -8,9 +8,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
-import tp.devops.entities.Customer;
 import tp.devops.entities.Vendor;
-import tp.devops.repositories.CustomerRepository;
+
 import tp.devops.repositories.VendorRepository;
 
 import java.util.List;

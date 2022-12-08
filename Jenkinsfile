@@ -15,7 +15,7 @@ pipeline {
                 }
             }
         }
-        stage("SonarQube Testing and Scan") {
+        /* stage("SonarQube Testing and Scan") {
             environment {
                 CI = 'true'
                scannerHome = tool 'sonarqube'
@@ -26,7 +26,7 @@ pipeline {
                    // sh 'mvn clean install -Dmaven.test.skip=true'
                     gv.sonarScan()
                 }
-              }
+              } */
         } 
         stage("Push JAR to Nexus"){
             steps {

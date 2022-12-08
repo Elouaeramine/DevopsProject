@@ -1,38 +1,4 @@
-#!/usr/bin/env groovy
-pipeline {
-
-agent any
-
-stages {
-
-stage ('GIT') {
-
-steps {
-
-echo "Getting Project from Git";
-
-git "https://github.com/******.git"; } }
-
-stage ('MVN CLEAN') {
-
-steps {
-
-echo "Maven Clean";
-
-bat 'mvn clean';
-
-} }
-
-stage ('MVN TEST') {
-
-steps {
-
-echo "Maven Test JUnit";
-
-bat 'mvn test';}
-
-}}}
-/*def gv
+def gv
 
 pipeline {
     agent any
@@ -78,4 +44,3 @@ pipeline {
 
     }
 }
-*/

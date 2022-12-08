@@ -60,7 +60,7 @@ public class CustomerRepositoryTests {
 
         Customer customerUpdated =  customerRepository.save(customer);
 
-        Assertions.assertThat(customerUpdated.getName()).isEqualTo(true);
+        Assertions.assertThat(customerUpdated.getName()).isEqualTo("sarah");
 
     }
 }

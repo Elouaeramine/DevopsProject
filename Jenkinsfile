@@ -13,6 +13,13 @@ pipeline {
                 }
             }
         }
+            stage("Unit Test"){
+            steps {
+                script {
+                    sh "mvn test"
+                }
+            }
+        }
          stage("SonarQube Testing and Scan") {
             environment {
                 CI = 'true'
@@ -21,7 +28,7 @@ pipeline {
             agent any
               steps {
                 script {
-                   // sh 'mvn clean install -Dmaven.test.skip=true'
+                   //sh 'mvn clean install -Dmaven.test.skip=true'
                     gv.sonarScan()
                 }
               } 

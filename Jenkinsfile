@@ -16,11 +16,13 @@ pipeline {
             }
         }
         stage("SonarQube Testing and Scan") {
-          steps{
-            withSonarQubeEnv('http://localhost:9000'){
-                sh 'mvn sonar:sonar'
-              }
+          steps {
+              script {
+                  gv.sonarScan()
+                  sh 'echo sonarqube'
+                }
             }
+          }
           /*environment {
                 CI = 'true'
                 scannerHome = tool 'sonarqube'

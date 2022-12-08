@@ -18,7 +18,7 @@ pipeline {
                 CI = 'true'
                scannerHome = tool 'sonarqube'
             }
-           // agent{ docker { image 'maven'}  }
+            agent any
               steps {
                 script {
                    // sh 'mvn clean install -Dmaven.test.skip=true'

@@ -16,10 +16,10 @@ pipeline {
             }
         }
         stage("SonarQube Testing and Scan") {
-            /*environment {
+            environment {
                 CI = 'true'
                scannerHome = tool 'sonarqube'
-            }*/
+            }
            // agent{ docker { image 'maven'}  }
               steps {
                 script {

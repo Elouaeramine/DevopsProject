@@ -15,26 +15,26 @@ pipeline {
                 }
             }
         }
-        stage("SonarQube Testing and Scan") {
-            /* environment {
+        /* stage("SonarQube Testing and Scan") {
+            environment {
                 CI = 'true'
                 scannerHome = tool 'sonarqube'
-            } */
-            // agent{ docker { image 'maven'}  }
+            }
+            agent{ docker { image 'maven'}  }
               steps {
                 script {
                    // sh 'mvn clean install -Dmaven.test.skip=true'
                     gv.sonarScan()
                 }
               }
-        } 
-        stage("Push JAR to Nexus"){
+        }*/
+        /*stage("Push JAR to Nexus"){
             steps {
                 script {
                     gv.pushToNexus()
                 }
             }
-        }
+        }*/
         stage("build image") {
             steps {
                 script {

@@ -13,7 +13,7 @@ pipeline {
                 }
             }
         }
-        /* stage("SonarQube Testing and Scan") {
+         stage("SonarQube Testing and Scan") {
             environment {
                 CI = 'true'
                scannerHome = tool 'sonarqube'
@@ -25,7 +25,7 @@ pipeline {
                     gv.sonarScan()
                 }
               } 
-        } */
+        } 
         stage("Push JAR to Nexus"){
             steps {
                 script {

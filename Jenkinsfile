@@ -26,8 +26,8 @@ pipeline {
                    // sh 'mvn clean install -Dmaven.test.skip=true'
                     gv.sonarScan()
                 }
-              } */
-        } 
+              } 
+        } */
         stage("Push JAR to Nexus"){
             steps {
                 script {

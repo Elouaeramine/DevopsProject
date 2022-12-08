@@ -15,18 +15,9 @@ nexusArtifactUploader artifacts: [[artifactId: 'devops', classifier: '', file: '
 }
 
 def sonarScan() {
-  stage("SonarQube Testing and Scan") {
-            steps {
-                script {
-                    gv.sonarScan()
-                    sh 'echo sonarqube'
-                }
-            }
-        }
-       /* timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        } */
-        
-}
+    echo 'Running sonarScan'
+    sh 'mvn test'
+    sh 'mvn sonar:sonar -D sonar.login=sqa_c963c83af8043493533514698983e626ce36d595'
+  }
 
 return this

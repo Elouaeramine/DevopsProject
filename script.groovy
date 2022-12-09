@@ -19,7 +19,7 @@ def sonarScan() {
            // sh "${scannerHome}/bin/sonar-scanner"
             // sh "mvn clean verify sonar:sonar -Dsonar.projectKey=sonarqube -Dmaven.test.skip=true"
         withSonarQubeEnv('sonarqube') {
-            sh 'mvn clean verify sonar:sonar   -Dmaven.test.skip=true  -Dsonar.projectKey=project-devops   -Dsonar.login=squ_91af51658d670b3cb711cb72813deabffed48314'
+            sh 'mvn clean verify sonar:sonar   -Dmaven.test.skip=true  -Dsonar.projectKey=sonarqube   -Dsonar.login=sqa_7ea18f3f12e7b71359d632d7f68bcb3ee0918cfd'
         }
 
 

@@ -43,16 +43,16 @@ services:
     volumes:
       - "/opt/sonar/:/var/lib/sonar"
 
-  nexus:
-    container_name: nexus
-    image: sonatype/nexus3
-    depends_on:
-      - postgresqldb
-    networks:
-      - devops
-    ports:
-      - 8081:8081
-    restart: always
+   #nexus:
+    #container_name: nexus
+    #image: sonatype/nexus3
+    #depends_on:
+    #  - postgresqldb
+    #networks:
+     # - devops
+    #ports:
+     # - 8081:8081
+    #restart: always
 
 
 

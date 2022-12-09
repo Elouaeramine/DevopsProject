@@ -15,13 +15,13 @@ pipeline {
                 }
             }
         }
-        stage("SonarQube Testing and Scan") {
+        /*stage("SonarQube Testing and Scan") {
           steps {
             script {
                 gv.sonarScan()
             }
           }
-        }
+        }*/
 
         stage("Push JAR to Nexus"){
             steps {

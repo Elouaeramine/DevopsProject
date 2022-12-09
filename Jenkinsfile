@@ -23,6 +23,13 @@ pipeline {
           }
         }
 
+        stage("Push JAR to Nexus"){
+            steps {
+                script {
+                    gv.pushToNexus()
+                }
+            }
+        }
 
     }
 

@@ -22,7 +22,9 @@ pipeline {
             }
             agent{ docker { image 'maven'}  }
               steps {
-               gv.sonarTest()
+                script {
+                    gv.sonarTest()
+                }
               }
         }
 

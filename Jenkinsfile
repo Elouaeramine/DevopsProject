@@ -16,17 +16,13 @@ pipeline {
             }
         }
         stage("SonarQube Testing and Scan") {
-            environment {
-                CI = 'true'
-                scannerHome = tool 'sonarqube'
+          steps {
+            script {
+                gv.sonarScan()
             }
-            agent{ docker { image 'maven'}  }
-              steps {
-                script {
-                    gv.sonarScan()
-                }
-              }
+          }
         }
+
 
     }
 

@@ -20,39 +20,41 @@ services:
   jenkins:
     image: jenkins/jenkins
     container_name: jenkins
+    networks:
+      - devops
     ports:
       - "8082:8080"
     volumes:
      - "jenkins_home:/var/jenkins_home"
      - "/var/run/docker.sock:/var/run/docker.sock"
      - "/usr/bin/docker:/usr/bin/docker"
-  sonarqube:
-    image: sonarqube
-    container_name: sonarqube
-    restart: always
-    ports:
-      - "9000:9000"
-    networks:
-      - devops
-    depends_on:
-      - postgresqldb
-    environment:
-      - spring.datasource.url=jdbc:postgresql://postgresqldb:5555/devops
-      - spring.datasource.username=postgres
-      - spring.datasource.password=superStrongP@ss
-    volumes:
-      - "/opt/sonar/:/var/lib/sonar"
-
-   #nexus:
-    #container_name: nexus
-    #image: sonatype/nexus3
+  #sonarqube:
+   # image: sonarqube
+    #container_name: sonarqube
+    #restart: always
+    #ports:
+    #  - "9000:9000"
+    #networks:
+    #  - devops
     #depends_on:
     #  - postgresqldb
-    #networks:
-     # - devops
-    #ports:
-     # - 8081:8081
-    #restart: always
+    #environment:
+    #  - spring.datasource.url=jdbc:postgresql://postgresqldb:5555/devops
+    #  - spring.datasource.username=postgres
+    #  - spring.datasource.password=superStrongP@ss
+    #volumes:
+    #  - "/opt/sonar/:/var/lib/sonar"
+
+  nexus:
+    container_name: nexus
+    image: sonatype/nexus3
+    depends_on:
+      - postgresqldb
+    networks:
+      - devops
+    ports:
+      - 8081:8081
+    restart: always
 
 
 

@@ -1,5 +1,10 @@
 version: '3'
 
+networks:
+  devops:
+    driver: bridge
+
+
 services:
   postgresqldb:
     container_name: postgresqldb
@@ -11,17 +16,41 @@ services:
     restart: always
     ports:
       - 5555:5432
-  api:
-    container_name: api
-    image: devops-project
-    build:
-      context: ./
-      dockerfile: Dockerfile
+  nexus:
+    container_name: nexus
+    image: sonatype/nexus3
     depends_on:
       - postgresqldb
+    networks:
+      - devops
     ports:
-      - 8080:8080
+      - 8081:8081
     restart: always
+
+  jenkins:
+    image: jenkins/jenkins:latest
+    container_name: jenkins
+    ports:
+      - "8082:8080"
+    networks:
+      - devops
+    restart: always
+
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    restart: always
+    ports:
+    - "9000:9000"
+    networks:
+      - devops
+    depends_on:
+      - postgresqldb
+    environment:
+    - spring.datasource.url=jdbc:postgresql://localhost:5555/devops
+    - spring.datasource.username=postgres 
+    - spring.datasource.password=superStrongP@ss
+    
 
 volumes:
   pgdata:

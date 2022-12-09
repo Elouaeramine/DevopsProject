@@ -8,6 +8,13 @@ pipeline {
         maven 'Maven'
     }
     stages {
+        stage("init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
         stage("SonarQube Testing and Scan") {
             environment {
                 CI = 'true'
@@ -15,9 +22,7 @@ pipeline {
             }
             agent{ docker { image 'maven'}  }
               steps {
-                withSonarQubeEnv(installationName: 'sonarqube', credentialsId: 'Sonarqube Token') {
-                    sh 'mvn clean package sonar:sonar'
-                }
+               gv.sonarTest()
               }
         }
 
